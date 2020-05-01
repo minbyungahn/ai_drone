@@ -24,6 +24,9 @@
 <title>로그인</title>
 <link href="<c:url value='/'/>css/common.css" rel="stylesheet" type="text/css" >
 <link href="<c:url value='/'/>css/login.css" rel="stylesheet" type="text/css" >
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 <!--
 function actionLogin() {
@@ -91,64 +94,58 @@ function fnInit() {
 <noscript>자바스크립트를 지원하지 않는 브라우저에서는 일부 기능을 사용하실 수 없습니다.</noscript>    
 <!-- 전체 레이어 시작 -->
 <div id="wrap">
-    <!-- header 시작 -->
-    <div id="header"><c:import url="/EgovPageLink.do?link=main/inc/EgovIncHeader" /></div>
-    <div id="topnavi"><c:import url="/sym/mms/EgovMainMenuHead.do" /></div>       
-    <!-- //header 끝 --> 
     <!-- container 시작 -->
     <div id="container">
-        <!-- 좌측메뉴 시작 -->
-        <div id="leftmenu"><c:import url="/sym/mms/EgovMainMenuLeft.do" /></div>
-        <!-- //좌측메뉴 끝 -->
-            <!-- content 시작 --> 
-            <div id="content">
-                <div id="cur_loc">
-                    <div id="cur_loc_align">
-                        <ul>
-                            <li>HOME</li>
-                            <li>&gt;</li>
-                            <li>사용자관리</li>
-                            <li>&gt;</li>
-                            <li><strong>사용자 로그인</strong></li>
-                        </ul>
-                    </div>                  
-                </div>
+	<div class="d-flex justify-content-center h-100">
+		<div class="card">
 
-                    <div id="login_title_div"><img alt="LOGIN 표준프레임워크 경량환경 내부업무 시스템에 오신것을 환영합니다." src="<c:url value='/' />images/login/img_logintitle.gif" /></div>        
-                        <div class="user_login">
-                        <form:form id="loginForm" name="loginForm" method="post">
-                            <fieldset><legend>조건정보 영역</legend>
-                                
-                                <div class="user_login_ultop">
-                                    <ul>
-                                        <li>
-                                            <label for="id">아이디</label>
-                                            <input type="text" class="input_style" title="아이디를 입력하세요." id="id" name="id" maxlength="10"/>
-                                        </li>
-                                        <li>
-                                            <label for="password">비밀번호</label>
-                                            <input type="password" class="input_style" maxlength="25" title="비밀번호를 입력하세요." id="password" name="password" 
-                                               onkeydown="javascript:if (event.keyCode == 13) { actionLogin(); }"/>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" name="checkId" title="로그인ID 저장여부" onclick="javascript:saveid(this.form);" id="checkId" />ID저장
-                                        </li>
-                                    </ul>
-                                    <input type="image" alt="로그인" onclick="javascript:actionLogin()" src="<c:url value='/'/>images/login/btn_login.gif"  />
-                                </div>
-                            </fieldset>
+			<div class="card-body">
+				<form:form id="loginForm" name="loginForm" method="post">
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input type="text" class="form-control" id="id" name="id" placeholder="username">
+						
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="password" class="form-control" placeholder="password" id="password" name="password" 
+						onkeydown="javascript:if (event.keyCode == 13) { actionLogin(); }"/>
+		
+						
+					</div>
+					<div class="row align-items-center remember">
+						<input type="checkbox" name="checkId" title="로그인ID 저장여부" onclick="javascript:saveid(this.form);" id="checkId" />Remember Me
+					</div>
+					<div class="form-group">
+						<input type="submit" value="Login" onclick="javascript:actionLogin()" class="btn float-right login_btn"> 
+					</div>
                             <input type="hidden" name="message" value="${message}" />
                             <input type="hidden" name="userSe"  value="USR"/>
                             <input name="j_username" type="hidden"/>
-                            </form:form>
-                        </div>
-                        </div>                      
-            <!-- //content 끝 -->    
+				</form:form>
+			</div>
+			<div class="card-footer">
+			<%-- 
+				<div class="d-flex justify-content-center links">
+					Don't have an account?<a href="#">Sign Up</a>
+				</div>
+				<div class="d-flex justify-content-center">
+					<a href="#">Forgot your password?</a>
+				</div>
+				--%>
+			</div>
+		</div>
+	</div>
+    
+
+
+ 
     </div>  
-    <!-- //container 끝 -->
-    <!-- footer 시작 -->
-    <div id="footer"><c:import url="/EgovPageLink.do?link=main/inc/EgovIncFooter" /></div>
-    <!-- //footer 끝 -->
+
 </div>
 <!-- //전체 레이어 끝 -->
 </body>
